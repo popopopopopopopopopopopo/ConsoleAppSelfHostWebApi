@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace ConsoleAppSelfHostWebApi.Controllers;
 
 [ApiController]
-[System.Web.Http.Route("[controller]")]
+[Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -21,7 +21,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [System.Web.Http.HttpGet]
+    [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
         var rng = new Random();

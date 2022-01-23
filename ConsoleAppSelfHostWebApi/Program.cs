@@ -1,6 +1,9 @@
 ﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace ConsoleAppSelfHostWebApi
 {
@@ -12,16 +15,33 @@ namespace ConsoleAppSelfHostWebApi
                 .AddCommandLine(args)
                 .AddEnvironmentVariables(prefix: "ASPNET6_")
                 .Build();
+            
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.WebHost.UseConfiguration(config);
+            builder.WebHost.UseKestrel();
 
-            var host = new WebHostBuilder()
-                .UseConfiguration(config)
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                //.UseIISIntegration() //// Here IIS integration is optional
-                .UseStartup<Startup>()
-                .Build();
+            var app = builder.Build();
 
-            host.Run();
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            //app.UseAuthorization();
+
+            //app.UseRouting();
+
+            app.MapControllers();
+            
+            app.MapGet("/", () => "Hello World!");
+
+            app.Run();
+            
         }
     }
 }
