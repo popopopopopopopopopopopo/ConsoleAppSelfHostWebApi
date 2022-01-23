@@ -11,6 +11,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNet.WebApi.WebHost" Version="5.2.7" />
       <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
+      <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
     </ItemGroup>
-
+    
 </Project>

@@ -10,7 +10,7 @@ namespace ConsoleAppSelfHostWebApi
         {
             var config = new ConfigurationBuilder()
                 .AddCommandLine(args)
-                .AddEnvironmentVariables(prefix: "ASPNETCORE_")
+                .AddEnvironmentVariables(prefix: "ASPNET6_")
                 .Build();
 
             var host = new WebHostBuilder()

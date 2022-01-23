@@ -2,10 +2,11 @@ using ConsoleAppSelfHostWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+
 namespace ConsoleAppSelfHostWebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[System.Web.Http.Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -20,7 +21,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet]
+    [System.Web.Http.HttpGet]
     public IEnumerable<WeatherForecast> Get()
     {
         var rng = new Random();
