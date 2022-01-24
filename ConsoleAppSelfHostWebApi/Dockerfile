@@ -5,7 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ConsoleAppSelfHostWebApi/ConsoleAppSelfHostWebApi.csproj", "ConsoleAppSelfHostWebApi/"]
+COPY ["ConsoleAppSelfHostWebApi.csproj", "ConsoleAppSelfHostWebApi/"]
+COPY ["Program.cs", "ConsoleAppSelfHostWebApi/"]
 RUN dotnet restore "ConsoleAppSelfHostWebApi/ConsoleAppSelfHostWebApi.csproj"
 COPY . .
 WORKDIR "/src/ConsoleAppSelfHostWebApi"

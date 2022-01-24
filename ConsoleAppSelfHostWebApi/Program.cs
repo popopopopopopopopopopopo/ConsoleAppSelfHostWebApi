@@ -9,7 +9,7 @@ namespace ConsoleAppSelfHostWebApi
 {
     class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             //あえてトップレベルコーディングはしない
             var config = new ConfigurationBuilder()
