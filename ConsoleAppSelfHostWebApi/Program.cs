@@ -11,6 +11,7 @@ namespace ConsoleAppSelfHostWebApi
     {
         public static void Main(string[] args)
         {
+            //あえてトップレベルコーディングはしない
             var config = new ConfigurationBuilder()
                 .AddCommandLine(args)
                 .AddEnvironmentVariables(prefix: "ASPNET6_")
